@@ -2,25 +2,19 @@ package Effects;
 
 import Shapes.gShape;
 
-public class gChangeable extends gEffect implements Runnable {
-    private Thread thread;
+public abstract class gChangeable extends gEffect {
+    boolean Firstplay=true;
     public gChangeable(gShape node, int starttime, int endtime) {
         super(node, starttime, endtime);
     }
 
     @Override
-    public final void play() {
-        thread=new Thread(this);
-        thread.start();
+    public void play() {
+        if (Firstplay){
+            init();
+            Firstplay=false;
+        }
     }
 
-    @Override
-    public void stop() {
-        thread.stop();
-    }
-
-    @Override
-    public void run() {
-        //todo por konamesh!!!
-    }
+    public abstract void init();
 }

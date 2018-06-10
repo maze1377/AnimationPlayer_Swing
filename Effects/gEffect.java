@@ -38,7 +38,6 @@ public abstract class gEffect {
     public void setNode(gShape node) {
         this.node = node;
     }
-
     public abstract void play();
     public abstract void stop();
 

@@ -1,5 +1,6 @@
 package Effects;
 
+import Shapes.gRectShape;
 import Shapes.gShape;
 
 import java.awt.*;
@@ -13,8 +14,13 @@ public class gChangeColor extends gEffect {
     }
 
     @Override
-    public void play() {//todo cast baiad beshe!?
-        this.getNode();
+    public void play() {
+        if (getNode() instanceof gRectShape){
+            gRectShape node=(gRectShape) this.getNode();
+            node.setBackcolor(color);
+        }else {
+          throw new RuntimeException("can't play this effect for this node:"+this.getNode().getId());
+        }
     }
 
     @Override

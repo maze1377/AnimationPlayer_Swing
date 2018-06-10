@@ -1,5 +1,6 @@
 package Effects;
 
+import Game.DrawPanel;
 import Shapes.gShape;
 
 public class gShow extends gEffect {
@@ -9,7 +10,7 @@ public class gShow extends gEffect {
 
     @Override
     public void play() {
-        //todo
+        DrawPanel.addShape(getNode());
     }
 
     @Override

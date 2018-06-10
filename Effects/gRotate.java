@@ -8,8 +8,18 @@ public class gRotate extends gChangeable {
     }
 
     @Override
-    public void run() {
-        super.run();
+    public void init() {
+
+    }
+
+    @Override
+    public void play() {
+        super.play();
+        //todo..
+    }
+
+    @Override
+    public void stop() {
 
     }
 }

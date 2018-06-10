@@ -5,7 +5,8 @@ import Shapes.gShape;
 public class gSlowMove extends gChangeable {
     private int x2;
     private int y2;
-    private int delta;
+    private double deltax;
+    private double deltay;
 
     public gSlowMove(gShape node, int starttime, int endtime, int x2, int y2) {
         super(node, starttime, endtime);
@@ -14,8 +15,21 @@ public class gSlowMove extends gChangeable {
     }
 
     @Override
-    public void run() {
-        super.run();
+    public void init() {
+        deltax=(getX2()-getNode().getX1())/(this.getEndtime()-this.getStart());
+        deltay=(getY2()-getNode().getY1())/(this.getEndtime()-this.getStart());
+    }
+
+    @Override
+    public void play() {
+        super.play();
+        this.getNode().setX1((int) (getNode().getX1()+deltax));
+        this.getNode().setY1((int) (getNode().getY1()+deltay));
+    }
+
+    @Override
+    public void stop() {
+
     }
 
     public int getX2() {
@@ -34,11 +48,4 @@ public class gSlowMove extends gChangeable {
         this.y2 = y2;
     }
 
-    public int getDelta() {
-        return delta;
-    }
-
-    public void setDelta(int delta) {
-        this.delta = delta;
-    }
 }
