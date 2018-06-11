@@ -16,4 +16,13 @@ public class Date {
     public static ArrayList<gShape> getgShapeArrayList() {
         return gShapeArrayList;
     }
+    public static gShape FindById(int id){
+        for (gShape x:gShapeArrayList){
+            if (x.getId()==id){
+                return x;
+            }
+        }
+        throw new RuntimeException("not Find Shape!");
+    }
+
 }

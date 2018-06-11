@@ -8,17 +8,33 @@ import javax.swing.*;
 import java.awt.*;
 
 public class gMain extends JFrame {
-    private static int speed = 20;//todo az file bekhone...
-    private static int currentFtp = 0;//todo az file bekhone...
+    private int speed;
+    private int currentFtp;
 
     public gMain() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBounds(100, 100, Setting.width, Setting.height);
         this.setTitle("Test");
         this.setLayout(new FlowLayout());
+        currentFtp = Setting.getCurrentFtp();
+        speed = Setting.getSpeed();
         //
         this.add(new DrawPanel());
         //main loop:
+        MainLoop();
+        //end Loop
+        setVisible(true);
+    }
+
+    private void Update(int currentFtp) {
+        System.out.println(System.currentTimeMillis() + "///\\\\" + currentFtp + "done!");
+        for (gShape x : Date.getgShapeArrayList()) {
+            x.PlayLoop(currentFtp);
+        }
+    }
+
+    private void MainLoop() {
+        init();
         Thread loop = new Thread(new Runnable() {
             private long previousTime = 0;
             private float secondsElapsedSinceLastFpsUpdate = 0f;
@@ -44,15 +60,11 @@ public class gMain extends JFrame {
         });
         loop.setPriority(Thread.MAX_PRIORITY);
         loop.start();
-        //end Loop
-        setVisible(true);
     }
 
-    private void Update(int currentFtp) {
-        System.out.println(System.currentTimeMillis()+"///\\\\"+currentFtp+"done!");
-        for (gShape x : Date.getgShapeArrayList()) {
-            x.PlayLoop(currentFtp);
+    private void init() {
+        for (int i = 0; i < currentFtp; i++) {
+            Update(i);
         }
     }
-
 }
