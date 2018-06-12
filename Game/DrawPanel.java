@@ -28,18 +28,16 @@ public class DrawPanel extends JComponent {
     }
 
     @Override
-    public void paintComponents(Graphics g) {
-        super.paintComponents(g);
-        Graphics2D g2 = (Graphics2D) g;
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
         gInitialize(g);
-        for (gShape x : shapes) {
+        for (gShape x : DrawPanel.shapes) {
             x.Draw(g);
         }
-
     }
 
     private void gInitialize(Graphics g) {
-        g.setColor(new Color(0, 0, 0));
+        g.setColor(new Color(0, 0, 255));
         g.fillRect(1, 1, getWidth() - 2, getHeight() - 2);
 
         g.setColor(Color.red);

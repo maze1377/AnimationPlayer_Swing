@@ -20,10 +20,10 @@ public class gHandler {
     }
     public static Color getColor(String x){
         //todo!
-        return null;
+        return new Color(0,0,0);
     }
     public static Font getFont(Map<String,String> x){
         //todo..!
-        return null;
+        return new Font("Courier New", Font.ITALIC, 12);
     }
 }

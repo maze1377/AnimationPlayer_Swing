@@ -2,6 +2,7 @@ package Game;
 
 import Common.Date;
 import Common.Setting;
+import FileManager.gReader;
 import Shapes.gShape;
 
 import javax.swing.*;
@@ -10,6 +11,7 @@ import java.awt.*;
 public class gMain extends JFrame {
     private int speed;
     private int currentFtp;
+    private DrawPanel drawPanel;
 
     public gMain() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -19,7 +21,9 @@ public class gMain extends JFrame {
         currentFtp = Setting.getCurrentFtp();
         speed = Setting.getSpeed();
         //
-        this.add(new DrawPanel());
+        drawPanel=new DrawPanel();
+        this.add(drawPanel);
+        new gReader(4);
         //main loop:
         MainLoop();
         //end Loop
@@ -53,6 +57,8 @@ public class gMain extends JFrame {
                     if (secondsElapsedSinceLastFpsUpdate >= 0.000001) {//todo update time with fram...!(timesh kharabe)
                         currentFtp++;
                         Update(currentFtp);
+                        drawPanel.repaint();
+                        System.out.println();
                         secondsElapsedSinceLastFpsUpdate = 0;
                     }
                 }
@@ -63,7 +69,7 @@ public class gMain extends JFrame {
     }
 
     private void init() {
-        for (int i = 0; i < currentFtp; i++) {
+        for (int i = 0; i <= currentFtp; i++) {
             Update(i);
         }
     }
