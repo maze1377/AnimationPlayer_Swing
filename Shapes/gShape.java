@@ -4,6 +4,7 @@ import Effects.gEffect;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public abstract class gShape {//done!
@@ -85,23 +86,26 @@ public abstract class gShape {//done!
         this.id = id;
     }
 
-    public void addgEffect(gEffect x){
+    public void addgEffect(gEffect x) {
         gEffectArrayList.add(x);
     }
-    public void removeEffect(gEffect x){
+
+    public void removeEffect(gEffect x) {
         gEffectArrayList.remove(x);
     }
-    public void PlayLoop(int currentFrame){
-        for (gEffect x:gEffectArrayList){
-            if (x.getStart()<=currentFrame){
+
+    public void PlayLoop(int currentFrame) {
+        for (gEffect x : gEffectArrayList) {
+            if (x.getStart() <= currentFrame && x.getEndtime() >= currentFrame) {
                 x.play();
-            }else if (x.getEndtime()<=currentFrame){
+            } else if (x.getEndtime() < currentFrame) {
                 x.stop();
-                this.removeEffect(x);//todo ?nemidonam shaiad khata bede!!!
+                //this.removeEffect(x);//todo ??
             }
         }
     }
 
+    public abstract List<String> getNeededField();
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -11,6 +11,12 @@ public class gLabel extends gShape {
         setText(text);
         setFont(font);
     }
+    public gLabel()
+    {
+        super(0,0,Color.black,0,0,1,0);
+        Text="Test";
+        font=new Font("Times New Roman",Font.TYPE1_FONT,34);
+    }
 
     public void Draw(Graphics g) {
         g.setColor(Color.white);

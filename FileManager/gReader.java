@@ -4,6 +4,7 @@ import Common.Date;
 import Common.Setting;
 import Common.gDefult;
 import Effects.gEffectFactory;
+import Shapes.gGroup;
 import Shapes.gShape;
 import Shapes.gShapeFactory;
 
@@ -26,7 +27,7 @@ public class gReader {
         Loop();
     }
 
-    ////
+
     public static void main(String[] args) {
         new gReader(4);
     }
@@ -85,6 +86,9 @@ public class gReader {
     private void Loop() {
         gShape node = null;
         while (currentI < lines.size()) {
+            if (lines.get(currentI).trim().toLowerCase().contains("group begin")){
+                readgroup();
+            }
             if (lines.get(currentI).trim().toLowerCase().contains("shape")) {
                 addShape();
                 node = gShapeFactory.MakeEffect(shapeDeta);
@@ -107,5 +111,37 @@ public class gReader {
         } else {
             // throw new RuntimeException("bad file..!");
         }
+    }
+    private void readgroup(){
+        gGroup group=new gGroup(id);
+        shapeDeta.put("id", String.valueOf(id++));
+        gShape node=null;
+        while (!lines.get(currentI).trim().toLowerCase().contains("group end")){
+            if (lines.get(currentI).trim().toLowerCase().contains("group begin")){
+                readgroup();
+            }
+            if (lines.get(currentI).trim().toLowerCase().contains("shape")) {
+                addShape();
+                node = gShapeFactory.MakeEffect(shapeDeta);
+                addtoDeta(node);
+            }
+            else if (lines.get(currentI).trim().toLowerCase().equals("effect")) {
+                addEffect();
+                gEffectFactory.MakeEffect(shapeDeta);
+            }else if (lines.get(currentI).trim().toLowerCase().equals("group effect")){
+                addEffect();
+                gEffectFactory.MakeEffect(shapeDeta,group);
+            } else {
+                node = null;
+                shapeDeta = gDefult.GetDefultShapeMap();
+                shapeDeta.put("id", String.valueOf(id++));
+                currentI++;
+            }
+        }
+        group.setbounds();
+        for (gShape x:group.getShapes()){
+            Date.removeShape(x);
+        }
+        Date.addgShape(group);
     }
 }

@@ -32,6 +32,12 @@ public class gShapeFactory {
                         Integer.parseInt(x.get("x1")), Integer.parseInt(x.get("y1")), Integer.parseInt(x.get("x2")),
                         Integer.parseInt(x.get("y2")), Boolean.getBoolean(x.get("isfilled")), gHandler.getColor(x.get("backcolor")),
                         Integer.parseInt(x.get("id")));
+            case "Square":
+                return new gSquare(gHandler.getColor(x.get("bordercolor")), Integer.parseInt(x.get("height")), Integer.parseInt(x.get("dashtype")),
+                        Integer.parseInt(x.get("x1")), Integer.parseInt(x.get("y1")), Integer.parseInt(x.get("x2")),
+                        Integer.parseInt(x.get("y2")), Boolean.getBoolean(x.get("isfilled")), gHandler.getColor(x.get("backcolor")),
+                        Integer.parseInt(x.get("id")));//square not have weight!!
+
             default:
                 throw new RuntimeException("shape not find!!");
         }
