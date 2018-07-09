@@ -4,7 +4,10 @@ import java.awt.*;
 
 public class gLine extends g2Shape {
 
-    public gLine(Color bordercolor, int height, int width, int dashtype, int x1, int y1, int x2, int y2,long id) {
+    public gLine(Color bordercolor, int dashtype, int x1, int y1, int x2, int y2,long id) {
+        super(bordercolor, 0, 0, dashtype, x1, y1, x2, y2,id);
+    }
+    public gLine(Color bordercolor,int height,int width, int dashtype, int x1, int y1, int x2, int y2,long id) {
         super(bordercolor, height, width, dashtype, x1, y1, x2, y2,id);
     }
     public gLine()

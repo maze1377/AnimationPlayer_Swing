@@ -6,6 +6,9 @@ public class gOval extends gRectShape {//done!
     public gOval(Color bordercolor, int height, int width, int dashtype, int x1, int y1, int x2, int y2, Boolean isFilled, Color backcolor,long id) {
         super(bordercolor, height, width, dashtype, x1, y1, x2, y2, isFilled, backcolor,id);
     }
+    public gOval(Color bordercolor, int height, int width, int dashtype, int x1, int y1, Boolean isFilled, Color backcolor,long id) {
+        super(bordercolor, height, width, dashtype, x1, y1, 0, 0, isFilled, backcolor,id);
+    }
     public gOval()
     {
         super(Color.BLACK,0,0,0,0,0,0,0,false,Color.white,0);

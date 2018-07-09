@@ -19,8 +19,10 @@ public class gBlink extends gChangeable {
         super.play();
         if (swHide){
             DrawPanel.addShape(getNode());
+            swHide=false;
         }else {
             DrawPanel.removeShape(getNode());
+            swHide=true;
         }
     }
 

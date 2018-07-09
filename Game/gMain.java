@@ -21,20 +21,25 @@ public class gMain extends JFrame {
         currentFtp = Setting.getCurrentFtp();
         speed = Setting.getSpeed();
         //
+        new gReader(0);
         drawPanel=new DrawPanel();
         this.add(drawPanel);
-        new gReader(4);
         //main loop:
         MainLoop();
         //end Loop
         setVisible(true);
     }
-
+    private void EndWork(){
+        drawPanel=new DrawPanel();
+        //todo karhaie marbote be paian root
+        drawPanel.repaint();
+    }
     private void Update(int currentFtp) {
         System.out.println(System.currentTimeMillis() + "///\\\\" + currentFtp + "done!");
         for (gShape x : Date.getgShapeArrayList()) {
             x.PlayLoop(currentFtp);
         }
+        drawPanel.getRootEffect().PlayLoop(currentFtp);
     }
 
     private void MainLoop() {
@@ -51,15 +56,19 @@ public class gMain extends JFrame {
                         previousTime = currentTime;
                     }
 
-                    float secondsElapsed = (currentTime - previousTime) / 1e9f;
+                    float secondsElapsed = (currentTime - previousTime) /1e3f;
                     previousTime = currentTime;
                     secondsElapsedSinceLastFpsUpdate += secondsElapsed;
-                    if (secondsElapsedSinceLastFpsUpdate >= 0.000001) {//todo update time with fram...!(timesh kharabe)
+                    if (secondsElapsedSinceLastFpsUpdate >= 1.0/Setting.getSpeed()) {//todo update time with fram...!(timesh kharabe)
                         currentFtp++;
                         Update(currentFtp);
                         drawPanel.repaint();
                         System.out.println();
                         secondsElapsedSinceLastFpsUpdate = 0;
+                    }
+                    if (currentFtp>=Setting.TotalFrame){
+                        EndWork();
+                        return;
                     }
                 }
             }

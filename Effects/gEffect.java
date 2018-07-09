@@ -13,6 +13,7 @@ public abstract class gEffect {
         this.node = node;
         this.starttime = starttime;
         this.endtime = endtime;
+        node.addgEffect(this);
     }
 
     public int getStart() {

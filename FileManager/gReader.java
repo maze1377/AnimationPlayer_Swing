@@ -10,26 +10,35 @@ import Shapes.gShapeFactory;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class gReader {
     private static int id = 1;
     private ArrayList<String> lines = new ArrayList<>();
     private Map<String, String> shapeDeta = new HashMap<>();
-    private int currentI = 4;//todo init from file!!
+    private int currentI;//todo init from file!!
 
     public gReader(int currentI) {
-        this.currentI = currentI;
+        currentI=0;
         init();
+        readRoot();
         Loop();
     }
-
-
-    public static void main(String[] args) {
-        new gReader(4);
+    private void readRoot(){
+        int index1 = lines.get(currentI).trim().indexOf(":");
+        Setting.TotalFrame=Integer.parseInt(lines.get(currentI).substring(index1 + 1).toLowerCase().trim());
+        currentI++;
+        Setting.setSpeed(Integer.parseInt(gHandler.getNumberInStinrg(lines.get(currentI))));
+        currentI++;
+        currentI++;//ignore item ..
+        while (!lines.get(currentI).trim().equals("")) {
+            try {
+                Date.addRootEffect(Integer.parseInt(gHandler.getNumberInStinrg(lines.get(currentI+1))),Integer.parseInt(gHandler.getNumberInStinrg(lines.get(currentI))));
+                currentI+=2;
+            }catch (NumberFormatException x){
+                break;
+            }
+        }
     }
 
     private void init() {
@@ -52,7 +61,7 @@ public class gReader {
             int index1 = lines.get(currentI).trim().indexOf(":");
             shapeDeta.put(lines.get(currentI).substring(0, index1).toLowerCase().trim(), lines.get(currentI).substring(index1 + 1).toLowerCase().trim());
             currentI++;
-            if (lines.get(currentI).equalsIgnoreCase("effect") || lines.get(currentI).trim().equals("")) {
+            if (lines.get(currentI).toLowerCase().contains("effect") || lines.get(currentI).toLowerCase().contains("group") || lines.get(currentI).trim().equals("") || lines.get(currentI).trim().toLowerCase().contains("shape")) {
                 break;
             }
         }
@@ -73,7 +82,7 @@ public class gReader {
             shapeDeta.put("effectstop", lines.get(currentI - 1).substring(index1 + 1).toLowerCase().trim());
         }
         while (true) {
-            if (lines.get(currentI).equalsIgnoreCase("effect") || lines.get(currentI).trim().equals("")) {
+            if (lines.get(currentI).toLowerCase().contains("effect") || lines.get(currentI).toLowerCase().contains("group") || lines.get(currentI).trim().equals("")) {
                 break;
             }
             index1 = lines.get(currentI).trim().indexOf(":");
@@ -86,10 +95,9 @@ public class gReader {
     private void Loop() {
         gShape node = null;
         while (currentI < lines.size()) {
-            if (lines.get(currentI).trim().toLowerCase().contains("group begin")){
+            if (lines.get(currentI).trim().toLowerCase().contains("group begin")) {
                 readgroup();
-            }
-            if (lines.get(currentI).trim().toLowerCase().contains("shape")) {
+            } else if (lines.get(currentI).trim().toLowerCase().contains("shape")) {
                 addShape();
                 node = gShapeFactory.MakeEffect(shapeDeta);
                 addtoDeta(node);
@@ -112,25 +120,27 @@ public class gReader {
             // throw new RuntimeException("bad file..!");
         }
     }
-    private void readgroup(){
-        gGroup group=new gGroup(id);
+
+    private void readgroup() {
+        currentI++;
+        gGroup group = new gGroup(id);
         shapeDeta.put("id", String.valueOf(id++));
-        gShape node=null;
-        while (!lines.get(currentI).trim().toLowerCase().contains("group end")){
-            if (lines.get(currentI).trim().toLowerCase().contains("group begin")){
+        gShape node = null;
+        List<gShape> gShapeList = new ArrayList<>();
+        while (!lines.get(currentI).trim().toLowerCase().contains("group end")) {
+            if (lines.get(currentI).trim().toLowerCase().contains("group begin")) {
                 readgroup();
-            }
-            if (lines.get(currentI).trim().toLowerCase().contains("shape")) {
+            } else if (lines.get(currentI).trim().toLowerCase().contains("shape")) {
                 addShape();
                 node = gShapeFactory.MakeEffect(shapeDeta);
                 addtoDeta(node);
-            }
-            else if (lines.get(currentI).trim().toLowerCase().equals("effect")) {
+                gShapeList.add(node);
+            } else if (lines.get(currentI).trim().toLowerCase().equals("effect")) {
                 addEffect();
                 gEffectFactory.MakeEffect(shapeDeta);
-            }else if (lines.get(currentI).trim().toLowerCase().equals("group effect")){
+            } else if (lines.get(currentI).trim().toLowerCase().equals("group effect")) {
                 addEffect();
-                gEffectFactory.MakeEffect(shapeDeta,group);
+                gEffectFactory.MakeEffect(shapeDeta, group);
             } else {
                 node = null;
                 shapeDeta = gDefult.GetDefultShapeMap();
@@ -138,10 +148,12 @@ public class gReader {
                 currentI++;
             }
         }
-        group.setbounds();
-        for (gShape x:group.getShapes()){
+
+        group.setShapes(gShapeList);
+        for (gShape x : group.getShapes()) {
             Date.removeShape(x);
         }
+        group.setbounds();
         Date.addgShape(group);
     }
 }

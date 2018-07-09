@@ -2,6 +2,7 @@ package Game;
 
 
 import Common.Setting;
+import Effects.gRootEffect;
 import Shapes.gShape;
 
 import javax.swing.*;
@@ -11,36 +12,44 @@ import java.util.List;
 
 public class DrawPanel extends JComponent {
     private static List<gShape> shapes = new ArrayList<gShape>();
+    private long lastupdate=1000;//for start first time!!
+    private gRootEffect rootEffect;
+
+    public gRootEffect getRootEffect() {
+        return rootEffect;
+    }
 
     public DrawPanel() {
         super();
-//        setOpaque(true);
-//        setBackground(Color.green);//??
+        rootEffect=new gRootEffect();
+        setOpaque(true);
         setPreferredSize(new Dimension(Setting.width, Setting.height));
     }
 
-    public static void addShape(gShape x) {
+    public static synchronized void addShape(gShape x) {
         shapes.add(x);
     }
 
-    public static void removeShape(gShape x) {
+    public static synchronized void removeShape(gShape x) {
         shapes.remove(x);
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected synchronized void paintComponent(Graphics g) {
         super.paintComponent(g);
-        gInitialize(g);
+        lastupdate++;
+         if(lastupdate>Setting.getSpeed())//just for lower process!!
+        {
+            gInitialize(g);
+            lastupdate=0;
+        }
         for (gShape x : DrawPanel.shapes) {
             x.Draw(g);
         }
     }
 
     private void gInitialize(Graphics g) {
-        g.setColor(new Color(0, 0, 255));
-        g.fillRect(1, 1, getWidth() - 2, getHeight() - 2);
-
-        g.setColor(Color.red);
-        g.drawRect(1, 1, getWidth() - 2, getHeight() - 2);
+        rootEffect.paintComponent(g,this);
     }
+
 }

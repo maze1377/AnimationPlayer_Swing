@@ -105,7 +105,7 @@ public abstract class gShape {//done!
         }
     }
 
-    public abstract List<String> getNeededField();
+    //public abstract List<String> getNeededField();
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

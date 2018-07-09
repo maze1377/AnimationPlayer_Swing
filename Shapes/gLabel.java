@@ -11,6 +11,7 @@ public class gLabel extends gShape {
         setText(text);
         setFont(font);
     }
+
     public gLabel()
     {
         super(0,0,Color.black,0,0,1,0);

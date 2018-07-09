@@ -19,7 +19,7 @@ public class gChangeColor extends gEffect {
             gRectShape node=(gRectShape) this.getNode();
             node.setBackcolor(color);
         }else {
-          throw new RuntimeException("can't play this effect for this node:"+this.getNode().getId());
+          //throw new RuntimeException("can't play this effect for this node:"+this.getNode().getId());//todo!
         }
     }
 

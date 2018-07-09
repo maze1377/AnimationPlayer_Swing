@@ -59,4 +59,8 @@ public class gGroup extends gShape {
         setWidth(maxx-minx);
         setHeight(maxy-miny);
     }
+
+    public void setShapes(List<gShape> shapes) {
+        this.shapes = shapes;
+    }
 }
