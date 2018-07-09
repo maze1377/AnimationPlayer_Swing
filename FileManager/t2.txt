@@ -1,0 +1,27 @@
+frames: 200
+speed: 5 fps
+Items: 1
+mode: 1
+start: 1
+mode: 20
+start: 2
+mode: 150
+start: 4
+
+Shape: circle 
+length  : 100
+x1 : 100
+y1 : 100
+isfilled  : true
+backcolor  : 100,0,0
+bordercolor  : 0,100,0
+effect 
+show 
+start :10
+effect 
+blink 
+start :11
+stop :25
+
+
+

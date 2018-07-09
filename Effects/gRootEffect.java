@@ -227,7 +227,6 @@ public class gRootEffect {
 
         // center of current spiral
         Point center = new Point(x, y);
-        ;
 
         // How many points to draw per circle
         double STEPS_PER_ROTATION = 30;

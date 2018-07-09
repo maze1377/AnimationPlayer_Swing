@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Controller {
 
-    private DataBase dataBase=DataBase.getInstance();
+    //private DataBase dataBase=DataBase;
     private getClass getShapeClass=new getClass();
     public List<Class> getObjects()
     {
@@ -24,11 +24,11 @@ public class Controller {
     }
     public void addShape(gShape shape)
     {
-        dataBase.addgshape(shape);
+        DataBase.addgShape(shape);
     }
     public void removeShape(gShape shape)
     {
-        dataBase.removeShape(shape);
+        DataBase.removeShape(shape);
     }
     public void play()
     {
@@ -38,12 +38,10 @@ public class Controller {
     {
         //Todo stopAnim
     }
-    public void loadFromFile(File file)throws IOException
-    {
+    public void loadFromFile(File file) {
         //Todo loadFile
     }
-    public void saveToFile(File file) throws IOException
-    {
+    public void saveToFile(File file) {
         //ToDO saveFile
     }
     public void exit(){

@@ -8,29 +8,18 @@ start : 20
 mode :4
 start : 150
 
-group begin
 Shape: square
 x1: 100
 y1: 100
 length : 100
 bordercolor: 0, 100, 0
 backcolor : 100,0,0
-Shape: circle
-r : 200
-x1: 300
-y1: 300
-isfilled : true
-backcolor: 200, 0, 0
-bordercolor: 0, 200, 0
-group effect
+effect
 show
 start: 10
-group effect
-blink
-start : 11
-stop : 25
-group effect
-hide
-start: 50
-group end
+effect
+party
+start: 15
+stop : 50
+
 

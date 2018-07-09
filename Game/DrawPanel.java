@@ -12,16 +12,12 @@ import java.util.List;
 
 public class DrawPanel extends JComponent {
     private static List<gShape> shapes = new ArrayList<gShape>();
-    private long lastupdate=1000;//for start first time!!
+    private long lastupdate = 1000;//for start first time!!
     private gRootEffect rootEffect;
-
-    public gRootEffect getRootEffect() {
-        return rootEffect;
-    }
 
     public DrawPanel() {
         super();
-        rootEffect=new gRootEffect();
+        rootEffect = new gRootEffect();
         setOpaque(true);
         setPreferredSize(new Dimension(Setting.width, Setting.height));
     }
@@ -34,14 +30,18 @@ public class DrawPanel extends JComponent {
         shapes.remove(x);
     }
 
+    public gRootEffect getRootEffect() {
+        return rootEffect;
+    }
+
     @Override
     protected synchronized void paintComponent(Graphics g) {
         super.paintComponent(g);
         lastupdate++;
-         if(lastupdate>Setting.getSpeed())//just for lower process!!
+        if (lastupdate > Setting.getSpeed())//just for lower process!!
         {
             gInitialize(g);
-            lastupdate=0;
+            lastupdate = 0;
         }
         for (gShape x : DrawPanel.shapes) {
             x.Draw(g);
@@ -49,7 +49,7 @@ public class DrawPanel extends JComponent {
     }
 
     private void gInitialize(Graphics g) {
-        rootEffect.paintComponent(g,this);
+        rootEffect.paintComponent(g, this);
     }
 
 }
