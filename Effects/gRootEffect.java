@@ -35,7 +35,7 @@ public class gRootEffect {
     public void paintComponent(Graphics g, JComponent x) {
         Graphics2D g2 = (Graphics2D) g;
 
-        g.setColor(Color.BLACK);
+        g.setColor(Color.GRAY);
         g.fillRect(0,0,x.getWidth(),x.getHeight());
         g.setColor(Color.red);
         g.drawRect(1, 1, x.getWidth()-1 , x.getHeight()-1);

@@ -8,9 +8,9 @@ start : 20
 mode :4
 start : 150
 
-Shape: square
-x1: 100
-y1: 100
+Shape: circle
+x1: 250
+y1: 250
 length : 100
 bordercolor: 0, 100, 0
 backcolor : 100,0,0

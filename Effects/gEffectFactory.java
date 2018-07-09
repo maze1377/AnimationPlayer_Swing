@@ -1,6 +1,7 @@
 package Effects;
 
 import Common.DataBase;
+import EX.EffectNotFind;
 import FileManager.gHandler;
 import Shapes.gShape;
 
@@ -9,7 +10,7 @@ import java.util.Map;
 public class gEffectFactory {
     //map haveto have effectname
 
-    public static gEffect MakeEffect(Map<String, String> x) {
+    public static gEffect MakeEffect(Map<String, String> x) throws EffectNotFind {
         int startTime = Integer.parseInt(x.get("effectstart"));
         int endTime = Integer.parseInt(x.get("effectstop"));
         gEffect effect=null;
@@ -40,12 +41,12 @@ public class gEffectFactory {
                 effect = new gParty(DataBase.FindById(Integer.parseInt(x.get("id"))), startTime, endTime);
                 break;
             default:
-                throw new RuntimeException("effect not find!!");
+                throw new EffectNotFind("effect not find!!");
         }
         shape.addgEffect(effect);
         return effect;
     }
-    public static gEffect MakeEffect(Map<String, String> x, gShape node) {
+    public static gEffect MakeEffect(Map<String, String> x, gShape node) throws EffectNotFind {
         int startTime = Integer.parseInt(x.get("effectstart"));
         int endTime = Integer.parseInt(x.get("effectstop"));
         gEffect effect=null;
@@ -71,8 +72,11 @@ public class gEffectFactory {
             case "blink":
                 effect = new gBlink(node, startTime, endTime);
                 break;
+            case "party":
+                effect = new gParty(DataBase.FindById(Integer.parseInt(x.get("id"))), startTime, endTime);
+                break;
             default:
-                throw new RuntimeException("effect not find!!");
+                throw new EffectNotFind("effect not find!!");
         }
         node.addgEffect(effect);
         return effect;

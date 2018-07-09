@@ -13,6 +13,7 @@ public class Setting {
     public static int TotalFrame=300;
 
     public static Path CurrentPath= Paths.get("D:\\paydar\\swingProject\\src\\FileManager\\t1.txt");
+    public static Path PathOfMusic= Paths.get("D:\\paydar\\swingProject\\src\\FileManager\\t1.txt");
     public static int getSpeed() {
         return speed;
     }

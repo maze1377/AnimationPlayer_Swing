@@ -3,12 +3,14 @@ package Game;
 
 import Common.Setting;
 import Effects.gRootEffect;
+import Game.audioplayer.AudioPlayer2;
 import Shapes.gShape;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class DrawPanel extends JComponent {
     private static List<gShape> shapes = new ArrayList<gShape>();
@@ -20,6 +22,8 @@ public class DrawPanel extends JComponent {
         rootEffect = new gRootEffect();
         setOpaque(true);
         setPreferredSize(new Dimension(Setting.width, Setting.height));
+        AudioPlayer2 player = new AudioPlayer2();
+        player.play(Setting.PathOfMusic.toString());
     }
 
     public static synchronized void addShape(gShape x) {

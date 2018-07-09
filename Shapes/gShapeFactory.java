@@ -1,11 +1,12 @@
 package Shapes;
 
+import EX.ShapeNotFind;
 import FileManager.gHandler;
 
 import java.util.Map;
 
 public class gShapeFactory {
-    public static gShape MakeEffect(Map<String, String> x) {
+    public static gShape MakeEffect(Map<String, String> x) throws ShapeNotFind {
         switch (x.get("shape")) {
             case "circle":
                 return
@@ -36,7 +37,7 @@ public class gShapeFactory {
                         Integer.parseInt(x.get("id")));
 
             default:
-                throw new RuntimeException("shape not find!!");
+                throw new ShapeNotFind("shape not find!!");
         }
 
     }

@@ -45,6 +45,7 @@ public class gMain extends JFrame {
             x.PlayLoop(currentFtp);
         }
         drawPanel.getRootEffect().PlayLoop(currentFtp);
+        this.setTitle("currentFtp :"+currentFtp+",totalFtp:"+Setting.TotalFrame);
     }
 
     private void MainLoop() {
