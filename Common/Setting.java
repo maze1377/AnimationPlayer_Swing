@@ -5,8 +5,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Setting {
-    public static final int width=800;
-    public static final int height=600;
+    public static int width=800;
+    public static int height=600;
     public static final Color backGround=new Color(0,0,0);
     public static int speed=2;
     public static int currentFtp=0;

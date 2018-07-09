@@ -1,6 +1,9 @@
 frames: 200
 speed: 05fps
 Items: 1
+music : c://m.mp4
+height : 800
+width : 800
 mode : 1
 start:1
 mode : 2

@@ -10,6 +10,7 @@ import Shapes.gShapeFactory;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class gReader {
@@ -33,6 +34,23 @@ public class gReader {
         Setting.setSpeed(Integer.parseInt(gHandler.getNumberInStinrg(lines.get(currentI))));
         currentI++;
         currentI++;//ignore item ..
+        Map<String,String> defult =new HashMap<>();
+        defult.put("music","Null");
+        defult.put("height","Null");
+        defult.put("width","Null");
+        while (lines.get(currentI).trim().equals("mode")){
+                index1 = lines.get(currentI).trim().indexOf(":");
+                if (index1 == -1) index1 = 0;
+                defult.put(lines.get(currentI).substring(0, index1).toLowerCase().trim(), lines.get(currentI).substring(index1 + 1).toLowerCase().trim());
+                currentI++;
+        }
+        try {
+            Setting.width = Integer.parseInt(defult.get("width"));
+            Setting.height= Integer.parseInt(defult.get("height"));
+            Setting.PathOfMusic=Paths.get(defult.get("music"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         while (!lines.get(currentI).trim().equals("")) {
             try {
                 DataBase.addRootEffect(Integer.parseInt(gHandler.getNumberInStinrg(lines.get(currentI + 1))), Integer.parseInt(gHandler.getNumberInStinrg(lines.get(currentI))));
