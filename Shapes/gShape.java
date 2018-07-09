@@ -3,6 +3,7 @@ package Shapes;
 import Effects.gEffect;
 
 import java.awt.*;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -94,6 +95,10 @@ public abstract class gShape {//done!
         gEffectArrayList.remove(x);
     }
 
+    public ArrayList<gEffect> getgEffectArrayList() {
+        return gEffectArrayList;
+    }
+
     public void PlayLoop(int currentFrame) {
         for (gEffect x : gEffectArrayList) {
             if (x.getStart() <= currentFrame && x.getEndtime() >= currentFrame) {
@@ -105,13 +110,29 @@ public abstract class gShape {//done!
         }
     }
 
-    //public abstract List<String> getNeededField();
+    public abstract String GetString();
+
+    public abstract List<Field> getNeededField();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof gShape)) return false;
         gShape gShape = (gShape) o;
         return getId() == gShape.getId();
+    }
+
+    @Override
+    public String toString() {
+        String name = this.getClass().getName();
+        name = name.substring(name.lastIndexOf('.') + 2, name.length());
+        return name;
+    }
+
+    public String getDetail() {
+        String detail = "<html>Shape Type:" + toString() + "<br>Effect Count:"
+                + String.valueOf(getgEffectArrayList().size()) + "</html>";
+        return detail;
     }
 
     @Override

@@ -7,6 +7,11 @@ public class gRotate extends gChangeable {
         super(node, starttime, endtime);
     }
 
+    public gRotate()
+    {
+        super(null,0,0);
+    }
+
     @Override
     public void init() {
 
@@ -21,5 +26,10 @@ public class gRotate extends gChangeable {
     @Override
     public void stop() {
 
+    }
+
+    @Override
+    public String GetString() {
+        return null;
     }
 }

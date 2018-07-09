@@ -8,6 +8,10 @@ public class gShow extends gEffect {
         super(node, starttime, endtime);
     }
 
+    public gShow(){
+        super(null,0,0);
+    }
+
     @Override
     public void play() {
         DrawPanel.addShape(getNode());
@@ -15,4 +19,10 @@ public class gShow extends gEffect {
 
     @Override
     public void stop() {}
+
+    @Override
+    public String GetString() {
+        return "show \n"+
+                "start :"+this.getStart() +"\n";
+    }
 }

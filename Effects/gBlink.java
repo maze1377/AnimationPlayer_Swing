@@ -9,6 +9,11 @@ public class gBlink extends gChangeable {
         super(node, starttime, endtime);
     }
 
+    public gBlink()
+    {
+        super(null,0,0);
+    }
+
     @Override
     public void init() {
         swHide=false;
@@ -29,5 +34,12 @@ public class gBlink extends gChangeable {
     @Override
     public void stop() {
 
+    }
+
+    @Override
+    public String GetString() {
+        return "blink \n"+
+                "start :"+this.getStart() +"\n" +
+                "stop :" +this.getEndtime()+"\n";
     }
 }

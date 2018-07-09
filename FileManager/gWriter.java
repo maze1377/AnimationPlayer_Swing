@@ -10,5 +10,7 @@ public class gWriter {
     private void findLine(){
 
     }
+    public void WriteAll(){
 
+    }
 }

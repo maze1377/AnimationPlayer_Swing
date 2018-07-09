@@ -3,6 +3,7 @@ package Shapes;
 import Effects.gEffect;
 
 import java.awt.*;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,5 +63,35 @@ public class gGroup extends gShape {
 
     public void setShapes(List<gShape> shapes) {
         this.shapes = shapes;
+    }
+
+    @Override
+    public List<Field> getNeededField() {
+        ArrayList<Field> fields=new ArrayList<>();
+        try {
+            fields.add(gShape.class.getDeclaredField("x1"));
+            fields.add(gShape.class.getDeclaredField("y1"));
+            fields.add(gShape.class.getDeclaredField("width"));
+            fields.add(gShape.class.getDeclaredField("height"));
+        }catch (NoSuchFieldException e)
+        {
+            e.printStackTrace();
+        }
+        return fields;
+
+    }
+
+    @Override
+    public String GetString() {
+        StringBuilder temp=new StringBuilder("group begin \n");
+        for (gShape x:shapes){
+            temp.append(x.GetString());
+        }
+        for (gEffect x:this.getgEffectArrayList()){
+            temp.append("group effect \n");
+            temp.append(x.GetString());
+        }
+        temp.append("group end");
+        return  temp.toString();
     }
 }

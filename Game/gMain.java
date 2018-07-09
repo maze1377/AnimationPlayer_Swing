@@ -1,6 +1,6 @@
 package Game;
 
-import Common.Date;
+import Common.DataBase;
 import Common.Setting;
 import FileManager.gReader;
 import Shapes.gShape;
@@ -36,7 +36,7 @@ public class gMain extends JFrame {
     }
     private void Update(int currentFtp) {
         System.out.println(System.currentTimeMillis() + "///\\\\" + currentFtp + "done!");
-        for (gShape x : Date.getgShapeArrayList()) {
+        for (gShape x : DataBase.getgShapeArrayList()) {
             x.PlayLoop(currentFtp);
         }
         drawPanel.getRootEffect().PlayLoop(currentFtp);

@@ -1,9 +1,10 @@
 package Effects;
 
+import Common.DataBase;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ public class gRootEffect {
     private Color color = Color.red;
 
     public gRootEffect() {
-        setRootEffects(Common.Date.RootEffects);
+        setRootEffects(DataBase.RootEffects);
     }
 
     private Map<Integer,Integer> RootEffects=new HashMap<>();

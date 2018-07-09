@@ -1,6 +1,6 @@
 package FileManager;
 
-import Common.Date;
+import Common.DataBase;
 import Common.Setting;
 import Effects.gEffect;
 import Shapes.gShape;
@@ -35,7 +35,7 @@ public class gFrameManager {
 
     public void InitFrame(){
         for (int i=0;i<Setting.TotalFrame;i++){
-            for (gShape x : Date.getgShapeArrayList()) {
+            for (gShape x : DataBase.getgShapeArrayList()) {
                 x.PlayLoop(i);
             }
         }

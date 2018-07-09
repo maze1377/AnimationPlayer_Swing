@@ -42,6 +42,20 @@ public abstract class gEffect {
     public abstract void play();
     public abstract void stop();
 
+    public  abstract  String GetString();
+
+    @Override
+    public String toString()
+    {
+        String name= this.getClass().getName();
+        name=name.substring(name.lastIndexOf('.')+2,name.length());
+        return name ;    }
+    public String getDetail()
+    {
+        String detail="<html>Parent:"+node.toString()+"<br>Start Time:"+String.valueOf(starttime)+"</html>";
+        return detail;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

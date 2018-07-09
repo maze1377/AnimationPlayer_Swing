@@ -1,5 +1,6 @@
 package Effects;
 
+import FileManager.gHandler;
 import Shapes.gRectShape;
 import Shapes.gShape;
 
@@ -11,6 +12,12 @@ public class gChangeColor extends gEffect {
     public gChangeColor(gShape node, int starttime, int endtime, Color color) {
         super(node, starttime, endtime);
         setColor(color);
+    }
+
+    public gChangeColor()
+    {
+        super(null,0,0);
+        setColor(new Color(0,0,0));
     }
 
     @Override
@@ -32,5 +39,14 @@ public class gChangeColor extends gEffect {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    @Override
+    public String GetString() {
+        return "blink \n"+
+                "start :"+this.getStart() +"\n" +
+                "stop :" +this.getEndtime()+"\n"+
+                "effectcolor :"+ gHandler.convertoColor(this.getColor())+"\n";
+
     }
 }

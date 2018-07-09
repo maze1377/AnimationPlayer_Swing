@@ -26,6 +26,12 @@ public class gSlowMove extends gChangeable {
         this.getNode().setX1((int) (getNode().getX1()+deltax));
         this.getNode().setY1((int) (getNode().getY1()+deltay));
     }
+    public gSlowMove()
+    {
+        super(null,0,0);
+        setX2(0);
+        setY2(0);
+    }
 
     @Override
     public void stop() {
@@ -48,4 +54,12 @@ public class gSlowMove extends gChangeable {
         this.y2 = y2;
     }
 
+    @Override
+    public String GetString() {
+        return "slowmove \n"+
+                "start :"+this.getStart() +"\n" +
+                "stop :" +this.getEndtime()+"\n"+
+                "x2 : " + this.getX2() + "\n" +
+                "y2 : " + this.getY2() + "\n" ;
+    }
 }

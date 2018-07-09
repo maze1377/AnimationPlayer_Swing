@@ -17,6 +17,12 @@ public class gMove extends gEffect {
     this.getNode().setX1(getX2());
     this.getNode().setY1(getY2());
     }
+    public gMove()
+    {
+        super(null,0,0);
+        setX2(0);
+        setY2(0);
+    }
 
     @Override
     public void stop() { }
@@ -35,5 +41,13 @@ public class gMove extends gEffect {
 
     public void setY2(int y2) {
         this.y2 = y2;
+    }
+
+    @Override
+    public String GetString() {
+        return "move \n"+
+                "start :"+this.getStart() +"\n" +
+                "x2 : " + this.getX2() + "\n" +
+                "y2 : " + this.getY2() + "\n" ;
     }
 }

@@ -1,4 +1,4 @@
-package test;
+package Common;
 
 import Effects.gEffect;
 import Shapes.gShape;
@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class getClass {
-    public List<Class<gShape>>  GetgShapeList(){
-        List<Class<gShape>> gShapeList=new ArrayList<>();
+    public List<Class> getGShapeList(){
+        List<Class> gShapeList=new ArrayList<>();
 
-        File[] files = new File("./src/Shapes").listFiles();
+        File[] files = new File("src/Shapes").listFiles();
         ClassLoader classLoader = this.getClass().getClassLoader();
         for (File file : files) {
             if (file.isFile()) {
@@ -30,7 +30,7 @@ public class getClass {
             gShapeList.remove(classLoader.loadClass("Shapes.gRectShape"));
             gShapeList.remove(classLoader.loadClass("Shapes.gShape"));
             gShapeList.remove(classLoader.loadClass("Shapes.gShapeFactory"));
-            gShapeList.remove(classLoader.loadClass("Shapes.gShapeFactory"));
+            gShapeList.remove(classLoader.loadClass("Shapes.gGroup"));
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -38,9 +38,9 @@ public class getClass {
         //
         return gShapeList;
     }
-    public List<Class<gEffect>>  GetgEffectList(){
-        List<Class<gEffect>> gEffectList=new ArrayList<>();
-        File[] files = new File("./src/Effects").listFiles();
+    public List<Class>  getGEffectList(){
+        List<Class> gEffectList=new ArrayList<>();
+        File[] files = new File("src/Effects").listFiles();
         ClassLoader classLoader = this.getClass().getClassLoader();
         for (File file : files) {
             if (file.isFile()) {
@@ -57,6 +57,8 @@ public class getClass {
         try {
             gEffectList.remove(classLoader.loadClass("Effects.gEffect"));
             gEffectList.remove(classLoader.loadClass("Effects.gChangeable"));
+            gEffectList.remove(classLoader.loadClass("Effects.gEffectFactory"));
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -64,8 +66,4 @@ public class getClass {
         return gEffectList;
     }
 
-    public static void main(String[] args) {
-        new getClass().GetgShapeList();
-        new getClass().GetgEffectList();
-    }
 }

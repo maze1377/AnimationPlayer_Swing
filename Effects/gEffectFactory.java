@@ -1,6 +1,6 @@
 package Effects;
 
-import Common.Date;
+import Common.DataBase;
 import FileManager.gHandler;
 import Shapes.gShape;
 
@@ -14,19 +14,19 @@ public class gEffectFactory {
         int endTime = Integer.parseInt(x.get("effectstop"));
         switch (x.get("effectname")) {
             case "hide":
-                return new gHide(Date.FindById(Integer.parseInt(x.get("id"))), startTime, startTime);
+                return new gHide(DataBase.FindById(Integer.parseInt(x.get("id"))), startTime, startTime);
             case "show":
-                return new gShow(Date.FindById(Integer.parseInt(x.get("id"))), startTime, startTime);
+                return new gShow(DataBase.FindById(Integer.parseInt(x.get("id"))), startTime, startTime);
             case "changecolor":
-                return new gChangeColor(Date.FindById(Integer.parseInt(x.get("id"))), startTime, startTime, gHandler.getColor(x.get("effectcolor")));
+                return new gChangeColor(DataBase.FindById(Integer.parseInt(x.get("id"))), startTime, startTime, gHandler.getColor(x.get("effectcolor")));
             case "move":
-                return new gMove(Date.FindById(Integer.parseInt(x.get("id"))), startTime, startTime, Integer.parseInt(x.get("x2")), Integer.parseInt(x.get("y2")));
+                return new gMove(DataBase.FindById(Integer.parseInt(x.get("id"))), startTime, startTime, Integer.parseInt(x.get("x2")), Integer.parseInt(x.get("y2")));
             case "slowmove":
-                return new gSlowMove(Date.FindById(Integer.parseInt(x.get("id"))), startTime, endTime, Integer.parseInt(x.get("x2")), Integer.parseInt(x.get("y2")));
+                return new gSlowMove(DataBase.FindById(Integer.parseInt(x.get("id"))), startTime, endTime, Integer.parseInt(x.get("x2")), Integer.parseInt(x.get("y2")));
             case "rotate":
-                return new gRotate(Date.FindById(Integer.parseInt(x.get("id"))), startTime, endTime);
+                return new gRotate(DataBase.FindById(Integer.parseInt(x.get("id"))), startTime, endTime);
             case "blink":
-                return new gBlink(Date.FindById(Integer.parseInt(x.get("id"))), startTime, endTime);
+                return new gBlink(DataBase.FindById(Integer.parseInt(x.get("id"))), startTime, endTime);
             default:
                 throw new RuntimeException("effect not find!!");
         }

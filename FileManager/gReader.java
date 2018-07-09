@@ -1,6 +1,6 @@
 package FileManager;
 
-import Common.Date;
+import Common.DataBase;
 import Common.Setting;
 import Common.gDefult;
 import Effects.gEffectFactory;
@@ -33,7 +33,7 @@ public class gReader {
         currentI++;//ignore item ..
         while (!lines.get(currentI).trim().equals("")) {
             try {
-                Date.addRootEffect(Integer.parseInt(gHandler.getNumberInStinrg(lines.get(currentI+1))),Integer.parseInt(gHandler.getNumberInStinrg(lines.get(currentI))));
+                DataBase.addRootEffect(Integer.parseInt(gHandler.getNumberInStinrg(lines.get(currentI+1))),Integer.parseInt(gHandler.getNumberInStinrg(lines.get(currentI))));
                 currentI+=2;
             }catch (NumberFormatException x){
                 break;
@@ -115,7 +115,7 @@ public class gReader {
 
     private void addtoDeta(gShape node) {
         if (node != null) {
-            Date.addgShape(node);
+            DataBase.addgShape(node);
         } else {
             // throw new RuntimeException("bad file..!");
         }
@@ -151,9 +151,9 @@ public class gReader {
 
         group.setShapes(gShapeList);
         for (gShape x : group.getShapes()) {
-            Date.removeShape(x);
+            DataBase.removeShape(x);
         }
         group.setbounds();
-        Date.addgShape(group);
+        DataBase.addgShape(group);
     }
 }
