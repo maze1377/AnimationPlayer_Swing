@@ -39,7 +39,7 @@ public class DrawPanel extends JComponent {
     protected synchronized void paintComponent(Graphics g) {
         super.paintComponent(g);
         lastupdate++;
-        if (lastupdate > Setting.getSpeed())//just for lower process!!
+        //if (lastupdate > Setting.getSpeed())//just for lower process!!
         {
             gInitialize(g);
             lastupdate = 0;
@@ -51,6 +51,9 @@ public class DrawPanel extends JComponent {
 
     private void gInitialize(Graphics g) {
         rootEffect.paintComponent(g, this);
+    }
+    public void clean(){
+        shapes.clear();
     }
 
 }

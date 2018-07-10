@@ -1,29 +1,28 @@
-frames: 200
+frames: 300
 speed: 05fps
-Items: 1
-music : c://m.mp4
+Items: 0
 height : 800
 width : 800
 mode : 1
 start:1
 mode : 2
 start : 20
-mode :4
-start : 150
+mode :3
+start : 40
+mode : 4
+start:80
+mode : 5
+start : 100
+mode :6
+start : 120
+mode : 7
+start:140
+mode : 8
+start : 180
+mode :9
+start : 220
+mode : 10
+start : 260
 
-Shape: circle
-x1: 250
-y1: 250
-length : 100
-bordercolor: 0, 100, 0
-backcolor : 100,0,0
-bordersize : 10
-effect
-show
-start: 10
-effect
-party
-start: 15
-stop : 50
 
 

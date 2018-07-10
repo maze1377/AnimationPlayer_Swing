@@ -11,8 +11,8 @@ import java.util.Map;
 public class gRootEffect {
     private int depth = 0;
     private int direction = 0;
-    private int choose = 7;
-    private Color color = Color.red;
+    private int choose = 12;
+    private Color color = Color.white;
 
     public gRootEffect() {
         setRootEffects(DataBase.RootEffects);

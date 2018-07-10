@@ -1,27 +1,85 @@
-frames: 200
+frames: 100
 speed: 5 fps
-Items: 1
-mode: 1
-start: 1
-mode: 20
-start: 2
-mode: 150
-start: 4
+Items: 0
 
 Shape: circle 
-length  : 100
-x1 : 100
-y1 : 100
-isfilled  : true
-backcolor  : 100,0,0
+r  : 100
+x1 : 50
+y1 : 50
+backcolor  : 150,0,0
 bordercolor  : 0,100,0
 effect 
 show 
 start :10
-effect 
-blink 
-start :11
+effect
+slowmove
+start : 15
+stop : 35
+x2 : 150
+y2 : 150
+effect
+party
+start : 20
+stop :40
+
+Shape: label
+height : 100
+width : 100
+x1: 100
+y1: 100
+text :M_A_Z_E
+fontsize : 25
+fontcolor : 0,0,255
+bordercolor: 0, 100, 0
+effect
+show
+start: 15
+effect
+blink
+start :20
+stop :30
+effect
+hide
+start: 50
+
+Shape: line
+x1: 300
+y1: 300
+x2:400
+y2:400
+bordercolor: 0, 150, 0
+bordersize : 10
+effect
+show
+start: 50
+effect
+changecolor
+start : 11
 stop :25
+effectcolor : 100,100,50
+effect
+rotate
+start : 30
+stop : 50
+delta : 180
 
-
+Shape: square
+x1: 400
+y1: 400
+length : 75
+bordercolor: 0, 100, 100
+backcolor : 100,0,100
+effect
+show
+start: 60
+effect
+scale
+start: 64
+stop : 80
+scale : 20
+effect
+music
+start: 60
+stop : 85
+path : D:\paydar\swingProject\src\cello.wav
 

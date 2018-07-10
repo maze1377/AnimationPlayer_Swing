@@ -4,6 +4,7 @@ import Common.DataBase;
 import Common.Setting;
 import FileManager.gReader;
 import FileManager.gWriter;
+import Shapes.gLabel;
 import Shapes.gShape;
 
 import javax.swing.*;
@@ -35,13 +36,14 @@ public class gMain extends JFrame {
     }
 
     private void EndWork() {
-        drawPanel = new DrawPanel();
-        //todo karhaie marbote be paian root
+        drawPanel.getRootEffect().setChoose(2);
+        drawPanel.clean();
+        drawPanel.addShape(new gLabel(this.getHeight()/2,this.getWidth()/2,Color.white,50,50,1,"End",new Font("Arial",Font.ITALIC,20),1,Color.white ));
         drawPanel.repaint();
     }
 
     private void Update(int currentFtp) {
-    for (gShape x : DataBase.getgShapeArrayList()) {
+    for (gShape x : DataBase.getShapes()) {
             x.PlayLoop(currentFtp);
         }
         drawPanel.getRootEffect().PlayLoop(currentFtp);

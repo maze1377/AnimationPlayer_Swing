@@ -11,12 +11,15 @@ import java.util.List;
 public class gLabel extends gShape {
     private String Text;
     private Font font;
+    private Color fontcolor=Color.black;
 
-    public gLabel(int x1, int y1, Color bordercolor, int height, int width, int dashtype, String text, Font font,long id) {
+    public gLabel(int x1, int y1, Color bordercolor, int height, int width, int dashtype, String text, Font font,long id,Color fontcolor) {
         super(x1, y1, bordercolor, height, width, dashtype,id);
         setText(text);
         setFont(font);
+        setFontcolor(fontcolor);
     }
+
 
     public gLabel()
     {
@@ -83,5 +86,13 @@ public class gLabel extends gShape {
             temp.append(x.GetString());
         }
         return temp.toString();
+    }
+
+    public Color getFontcolor() {
+        return fontcolor;
+    }
+
+    public void setFontcolor(Color fontcolor) {
+        this.fontcolor = fontcolor;
     }
 }

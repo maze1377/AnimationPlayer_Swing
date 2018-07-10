@@ -19,7 +19,7 @@ public class gShapeFactory {
             case "label":
                 temp= new gLabel(Integer.parseInt(x.get("x1")), Integer.parseInt(x.get("y1")), gHandler.getColor(x.get("bordercolor")),
                         Integer.parseInt(x.get("height")), Integer.parseInt(x.get("width")), Integer.parseInt(x.get("dashtype")),
-                        x.get("text"), gHandler.getFont(x), Integer.parseInt(x.get("id")));
+                        x.get("text"), gHandler.getFont(x), Integer.parseInt(x.get("id")),gHandler.getColor(x.get("fontcolor")));
                 break;
             case "line":
                 temp= new gLine(gHandler.getColor(x.get("bordercolor")),

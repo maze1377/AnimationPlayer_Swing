@@ -35,7 +35,7 @@ public class gFrameManager {
 
     public void InitFrame(){
         for (int i=0;i<Setting.TotalFrame;i++){
-            for (gShape x : DataBase.getgShapeArrayList()) {
+            for (gShape x : DataBase.getShapes()) {
                 x.PlayLoop(i);
             }
         }

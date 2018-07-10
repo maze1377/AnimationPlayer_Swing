@@ -24,14 +24,18 @@ public class gDefault {
         shapeDeta.put("y1", "77");
         shapeDeta.put("x2", "177");
         shapeDeta.put("y2", "177");
-        shapeDeta.put("fontname", "177");
+        shapeDeta.put("fontname", "Arial");
         shapeDeta.put("font", "177");//?
         shapeDeta.put("fontsize", "16");
+        shapeDeta.put("fontcolor", "0,0,0");
         shapeDeta.put("text", "Just for test..!");
         shapeDeta.put("effectname", "show");
         shapeDeta.put("effectstart", "1");
         shapeDeta.put("effectend", "1");
-        shapeDeta.put("id", "-1");//have to init in filereader..!
+        shapeDeta.put("delta", "0");
+        shapeDeta.put("scale", "0");
+        shapeDeta.put("path","null");
+        shapeDeta.put("id", "-1");
         return shapeDeta;
     }
 }

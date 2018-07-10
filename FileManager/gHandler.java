@@ -31,7 +31,7 @@ public class gHandler {
         return x.getRed()+","+x.getGreen()+","+x.getBlue();
     }
     public static Font getFont(Map<String,String> x){
-        //todo..!
-        return new Font("Courier New", Font.ITALIC, 12);
+
+        return new Font(x.get("fontname"), Font.ITALIC, Integer.parseInt(x.get("fontsize")));
     }
 }
