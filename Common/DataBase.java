@@ -29,4 +29,7 @@ public class DataBase {
         }
         throw new RuntimeException("not Find Shape!");
     }
+    public static void  clean(){
+        getgShapeArrayList().clear();
+    }
 }

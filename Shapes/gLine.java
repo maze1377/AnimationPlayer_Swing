@@ -21,8 +21,14 @@ public class gLine extends g2Shape {
         super(Color.black,0,0,1,0,0,0,0,0);
     }
     public void Draw(Graphics g) {
-        g.setColor(this.getBordercolor());
-        g.drawLine(getX1(), getY1(), getX2(), getY2());
+        Graphics2D y=(Graphics2D) g;
+        y.scale(this.getScale(),this.getScale());
+        y.rotate(this.getDelta());
+        y.setColor(this.getBordercolor());
+        y.setStroke(new BasicStroke(this.getBorderSize()));
+        y.drawLine(getX1(), getY1(), getX2(), getY2());
+        y.scale(1,1);
+        y.rotate(-this.getDelta());
     }
     @Override
     public List<Field> getNeededField() {
@@ -41,7 +47,7 @@ public class gLine extends g2Shape {
     }
     @Override
     public String GetString() {
-        StringBuilder temp=new StringBuilder( "Shape: label \n"+
+        StringBuilder temp=new StringBuilder( "Shape: line \n"+
                 "x1 : " +this.getX1()+"\n"+
                 "y1 : " +this.getY1()+"\n"+
                 "x2 : " +this.getX2()+"\n"+

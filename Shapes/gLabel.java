@@ -26,9 +26,15 @@ public class gLabel extends gShape {
     }
 
     public void Draw(Graphics g) {
-        g.setColor(Color.white);
-        g.setFont(font);
-        g.drawString(getText(), getX1(), getY1());
+        Graphics2D y=(Graphics2D) g;
+        y.scale(this.getScale(),this.getScale());
+        y.rotate(this.getDelta());
+        y.setColor(Color.white);
+        y.setStroke(new BasicStroke(this.getBorderSize()));
+        y.setFont(font);
+        y.drawString(getText(), getX1(), getY1());
+        y.scale(1,1);
+        y.rotate(-this.getDelta());
     }
 
     public String getText() {

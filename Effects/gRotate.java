@@ -3,8 +3,11 @@ package Effects;
 import Shapes.gShape;
 
 public class gRotate extends gChangeable {
-    public gRotate(gShape node, int starttime, int endtime) {
+    private double delta;
+    private double step;
+    public gRotate(gShape node, int starttime, int endtime,double delta) {
         super(node, starttime, endtime);
+        setDelta(delta);
     }
 
     public gRotate()
@@ -12,24 +15,41 @@ public class gRotate extends gChangeable {
         super(null,0,0);
     }
 
-    @Override
-    public void init() {
-
-    }
 
     @Override
     public void play() {
         super.play();
-        //todo..
+        this.getNode().setDelta(this.getNode().getDelta()+this.step);
+    }
+
+    @Override
+    public void init() {
+        try {
+            step=(this.delta-this.getNode().getDelta())/(this.getEndTime()-this.getStart());
+        }catch (Exception e){
+            e.printStackTrace();
+            step=(this.delta-this.getNode().getDelta());
+        }
     }
 
     @Override
     public void stop() {
-
+        this.getNode().setDelta(0);
     }
 
     @Override
     public String GetString() {
-        return null;
+        return "slowmove \n"+
+                "start :"+this.getStart() +"\n" +
+                "stop :" +this.getEndTime()+"\n"+
+                "delta : " + this.getDetail() + "\n" ;
+    }
+
+    public double getDelta() {
+        return delta;
+    }
+
+    public void setDelta(double delta) {
+        this.delta = delta;
     }
 }

@@ -15,8 +15,29 @@ public abstract class gShape {//done!
     private int width;
     private int height;
     private int dashtype;
+    private double scale=1;
+    private double delta=0;
+    private int BorderSize=1;
+
     //
     private long id;
+
+    public double getScale() {
+        return scale;
+    }
+
+    public void setScale(double scale) {
+        this.scale = scale;
+    }
+
+    public double getDelta() {
+        return delta;
+    }
+
+    public void setDelta(double delta) {
+        this.delta = delta;
+    }
+
     private ArrayList<gEffect> gEffectArrayList = new ArrayList<>();
 
     public gShape(int x1, int y1, Color bordercolor, int height, int width, int dashtype, long id) {
@@ -101,9 +122,9 @@ public abstract class gShape {//done!
 
     public void PlayLoop(int currentFrame) {
         for (gEffect x : gEffectArrayList) {
-            if (x.getStart() <= currentFrame && x.getEndtime() >= currentFrame) {
+            if (x.getStart() <= currentFrame && x.getEndTime() >= currentFrame) {
                 x.play();
-            } else if (x.getEndtime() < currentFrame) {
+            } else if (x.getEndTime() < currentFrame) {
                 x.stop();
                 //this.removeEffect(x);//todo ??
             }
@@ -140,4 +161,11 @@ public abstract class gShape {//done!
         return Objects.hash(getId());
     }
 
+    public int getBorderSize() {
+        return BorderSize;
+    }
+
+    public void setBorderSize(int borderSize) {
+        BorderSize = borderSize;
+    }
 }

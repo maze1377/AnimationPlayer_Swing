@@ -21,9 +21,15 @@ public class gGroup extends gShape {
     }
     @Override
     public void Draw(Graphics g) {
+        Graphics2D y=(Graphics2D) g;
+        y.scale(this.getScale(),this.getScale());
+        y.rotate(this.getDelta());
+        y.setStroke(new BasicStroke(this.getBorderSize()));
         for (gShape x:shapes){
             x.Draw(g);
         }
+        y.scale(1,1);
+        y.rotate(-this.getDelta());
     }
 
     public List<gShape> getShapes() {

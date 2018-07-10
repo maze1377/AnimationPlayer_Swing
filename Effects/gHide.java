@@ -20,7 +20,7 @@ public class gHide extends gEffect {//done
     public void stop() {}
     @Override
     public String GetString() {
-        return "changecolor \n"+
+        return "hide \n"+
                 "start :"+this.getStart() +"\n";
     }
 }

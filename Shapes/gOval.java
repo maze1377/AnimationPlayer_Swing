@@ -20,15 +20,21 @@ public class gOval extends gRectShape {//done!
         super(Color.BLACK,0,0,0,0,0,0,0,false,Color.white,0);
     }
     public void Draw(Graphics g) {
-        g.setColor(this.getBordercolor());
+        Graphics2D y=(Graphics2D) g;
+        y.setColor(this.getBordercolor());
+        y.scale(this.getScale(),this.getScale());
+        y.setStroke(new BasicStroke(this.getBorderSize()));
+        y.rotate(this.getDelta());
         if (getIsFilled()) {
-            g.setColor(getBackcolor());
-            g.fillOval(getX1(), getY1(), getWidth(), getHeight());
+            y.setColor(getBackcolor());
+            y.fillOval(getX1(), getY1(), getWidth(), getHeight());
 
-            g.setColor(getBordercolor());
-            g.drawOval(getX1(), getY1(), getWidth(), getHeight());
+            y.setColor(getBordercolor());
+            y.drawOval(getX1(), getY1(), getWidth(), getHeight());
         } else
-            g.drawOval(getX1(), getY1(), getWidth(), getHeight());
+            y.drawOval(getX1(), getY1(), getWidth(), getHeight());
+        y.scale(1,1);
+        y.rotate(-this.getDelta());
     }
     @Override
     public void setWidth(int width) {
@@ -53,7 +59,7 @@ public class gOval extends gRectShape {//done!
 
     @Override
     public String GetString() {
-        StringBuilder temp=new StringBuilder( "Shape: circle \n"+
+        StringBuilder temp=new StringBuilder( "Shape: oval \n"+
                 "r1 : "+this.getHeight()+"\n"+
                 "r2 : "+this.getWidth()+"\n"+
                 "x1 : " +this.getX1()+"\n"+

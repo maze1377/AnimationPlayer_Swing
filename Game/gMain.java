@@ -23,6 +23,7 @@ public class gMain extends JFrame {
         currentFtp = Setting.getCurrentFtp();
         speed = Setting.getSpeed();
         //
+        DataBase.clean();
         new gReader(0);
         drawPanel = new DrawPanel();
         this.add(drawPanel);
@@ -40,8 +41,7 @@ public class gMain extends JFrame {
     }
 
     private void Update(int currentFtp) {
-        System.out.println(System.currentTimeMillis() + "///\\\\" + currentFtp + "done!");
-        for (gShape x : DataBase.getgShapeArrayList()) {
+    for (gShape x : DataBase.getgShapeArrayList()) {
             x.PlayLoop(currentFtp);
         }
         drawPanel.getRootEffect().PlayLoop(currentFtp);

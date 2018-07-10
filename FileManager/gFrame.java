@@ -15,7 +15,7 @@ public class gFrame {
     public void addgEffect(gEffect x){
         NowEffect.add(x);
     }
-    public void RemoveEffect(gEffect x){
+    public void removeEffect(gEffect x){
         NowEffect.remove(x);
     }
 

@@ -17,6 +17,7 @@ y1: 250
 length : 100
 bordercolor: 0, 100, 0
 backcolor : 100,0,0
+bordersize : 10
 effect
 show
 start: 10

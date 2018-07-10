@@ -20,15 +20,15 @@ public abstract class gEffect {
         return starttime;
     }
 
-    public void setStart(int start) {
+    public void setStartTime(int start) {
         this.starttime = start;
     }
 
-    public int getEndtime() {
+    public int getEndTime() {
         return endtime;
     }
 
-    public void setEndtime(int endtime) {
+    public void setEndTime(int endtime) {
         this.endtime = endtime;
     }
 
@@ -62,13 +62,13 @@ public abstract class gEffect {
         if (!(o instanceof gEffect)) return false;
         gEffect gEffect = (gEffect) o;
         return starttime == gEffect.starttime &&
-                getEndtime() == gEffect.getEndtime() &&
+                getEndTime() == gEffect.getEndTime() &&
                 Objects.equals(getNode(), gEffect.getNode());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(getNode(), starttime, getEndtime());
+        return Objects.hash(getNode(), starttime, getEndTime());
     }
 }

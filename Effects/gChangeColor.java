@@ -43,9 +43,9 @@ public class gChangeColor extends gEffect {
 
     @Override
     public String GetString() {
-        return "blink \n"+
+        return "changecolor \n"+
                 "start :"+this.getStart() +"\n" +
-                "stop :" +this.getEndtime()+"\n"+
+                "stop :" +this.getEndTime()+"\n"+
                 "effectcolor :"+ gHandler.convertoColor(this.getColor())+"\n";
 
     }

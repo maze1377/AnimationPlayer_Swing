@@ -3,8 +3,7 @@ package Shapes;
 import Effects.gEffect;
 import FileManager.gHandler;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,18 +22,23 @@ public class gRect extends gRectShape {//done!
 
 	public void Draw(Graphics g)
 	{
-		g.setColor(this.getBordercolor());
+		Graphics2D y=(Graphics2D) g;
+		y.scale(this.getScale(),this.getScale());
+		y.rotate(this.getDelta());
+		y.setColor(this.getBordercolor());
+		y.setStroke(new BasicStroke(this.getBorderSize()));
 		if (getIsFilled())
 		{
-			g.setColor(getBackcolor());
-			g.fillRect(getX1(), getY1(), getWidth(), getHeight());
+			y.setColor(getBackcolor());
+			y.fillRect(getX1(), getY1(), getWidth(), getHeight());
 			
-			g.setColor(getBordercolor());
-			g.drawRect(getX1(), getY1(), getWidth(), getHeight());
+			y.setColor(getBordercolor());
+			y.drawRect(getX1(), getY1(), getWidth(), getHeight());
 		}
 		else
-			g.drawRect(getX1(), getY1(), getWidth(), getHeight());
-		
+			y.drawRect(getX1(), getY1(), getWidth(), getHeight());
+		y.scale(1,1);
+		y.rotate(-this.getDelta());
 	}
 
 	@Override
@@ -55,7 +59,7 @@ public class gRect extends gRectShape {//done!
 
 	@Override
 	public String GetString() {
-		StringBuilder temp=new StringBuilder( "Shape: circle \n"+
+		StringBuilder temp=new StringBuilder( "Shape: rect \n"+
 				"Height : "+this.getHeight()+"\n"+
 				"Width : "+this.getWidth()+"\n"+
 				"x1 : " +this.getX1()+"\n"+

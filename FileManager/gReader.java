@@ -2,7 +2,7 @@ package FileManager;
 
 import Common.DataBase;
 import Common.Setting;
-import Common.gDefult;
+import Common.gDefault;
 import Effects.gEffectFactory;
 import Shapes.gGroup;
 import Shapes.gShape;
@@ -10,17 +10,21 @@ import Shapes.gShapeFactory;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class gReader {
     private static int id = 1;
     private ArrayList<String> lines = new ArrayList<>();
     private Map<String, String> shapeDeta = new HashMap<>();
-    private int currentI;//todo init from file!!
-
-    public gReader(int currentI) {
+    private int currentI;
+    public gReader(){
         currentI = 0;
+        init();
+        readRoot();
+        Loop();
+    }
+    public gReader(int currentI) {
+        currentI = currentI;
         init();
         readRoot();
         Loop();
@@ -35,7 +39,6 @@ public class gReader {
         currentI++;
         currentI++;//ignore item ..
         Map<String,String> defult =new HashMap<>();
-        defult.put("music","Null");
         defult.put("height","Null");
         defult.put("width","Null");
         while (lines.get(currentI).trim().equals("mode")){
@@ -47,7 +50,6 @@ public class gReader {
         try {
             Setting.width = Integer.parseInt(defult.get("width"));
             Setting.height= Integer.parseInt(defult.get("height"));
-            Setting.PathOfMusic=Paths.get(defult.get("music"));
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -72,7 +74,7 @@ public class gReader {
             e.printStackTrace();
         }
         lines.add("");//add if not have end space file..
-        shapeDeta = gDefult.GetDefultShapeMap();
+        shapeDeta = gDefault.GetDefultShapeMap();
         shapeDeta.put("id", String.valueOf(id++));
     }
 
@@ -131,7 +133,7 @@ public class gReader {
                     gEffectFactory.MakeEffect(shapeDeta);
                 } else {
                     node = null;
-                    shapeDeta = gDefult.GetDefultShapeMap();
+                    shapeDeta = gDefault.GetDefultShapeMap();
                     shapeDeta.put("id", String.valueOf(id++));
                     currentI++;
                 }
@@ -174,7 +176,7 @@ public class gReader {
                 gEffectFactory.MakeEffect(shapeDeta, group);
             } else {
                 node = null;
-                shapeDeta = gDefult.GetDefultShapeMap();
+                shapeDeta = gDefault.GetDefultShapeMap();
                 shapeDeta.put("id", String.valueOf(id++));
                 currentI++;
             }

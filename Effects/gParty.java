@@ -1,6 +1,5 @@
 package Effects;
 
-import Shapes.g2Shape;
 import Shapes.gRectShape;
 import Shapes.gShape;
 
@@ -35,6 +34,6 @@ public class gParty extends gChangeable {
     public String GetString() {
         return "Party \n"+
                 "start :"+this.getStart() +"\n" +
-                "stop :" +this.getEndtime()+"\n";
+                "stop :" +this.getEndTime()+"\n";
     }
 }

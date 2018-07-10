@@ -14,23 +14,29 @@ public class gSlowMove extends gChangeable {
         setY2(y2);
     }
 
+    public gSlowMove() {
+        super(null, 0, 0);
+        setX2(0);
+        setY2(0);
+    }
+
     @Override
     public void init() {
-        deltax=(getX2()-getNode().getX1())/(this.getEndtime()-this.getStart());
-        deltay=(getY2()-getNode().getY1())/(this.getEndtime()-this.getStart());
+        try {
+            deltay = (getY2() - getNode().getY1()) / (this.getEndTime() - this.getStart());
+            deltax = (getX2() - getNode().getX1()) / (this.getEndTime() - this.getStart());
+        } catch (Exception x) {
+            x.printStackTrace();
+            deltay = (getY2() - getNode().getY1());
+            deltax = (getX2() - getNode().getX1());
+        }
     }
 
     @Override
     public void play() {
         super.play();
-        this.getNode().setX1((int) (getNode().getX1()+deltax));
-        this.getNode().setY1((int) (getNode().getY1()+deltay));
-    }
-    public gSlowMove()
-    {
-        super(null,0,0);
-        setX2(0);
-        setY2(0);
+        this.getNode().setX1((int) (getNode().getX1() + deltax));
+        this.getNode().setY1((int) (getNode().getY1() + deltay));
     }
 
     @Override
@@ -56,10 +62,10 @@ public class gSlowMove extends gChangeable {
 
     @Override
     public String GetString() {
-        return "slowmove \n"+
-                "start :"+this.getStart() +"\n" +
-                "stop :" +this.getEndtime()+"\n"+
+        return "slowmove \n" +
+                "start :" + this.getStart() + "\n" +
+                "stop :" + this.getEndTime() + "\n" +
                 "x2 : " + this.getX2() + "\n" +
-                "y2 : " + this.getY2() + "\n" ;
+                "y2 : " + this.getY2() + "\n";
     }
 }

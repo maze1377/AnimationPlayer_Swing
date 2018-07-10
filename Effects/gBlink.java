@@ -40,6 +40,6 @@ public class gBlink extends gChangeable {
     public String GetString() {
         return "blink \n"+
                 "start :"+this.getStart() +"\n" +
-                "stop :" +this.getEndtime()+"\n";
+                "stop :" +this.getEndTime()+"\n";
     }
 }

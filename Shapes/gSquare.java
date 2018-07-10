@@ -32,7 +32,7 @@ public class gSquare extends gRect {
 
     @Override
     public String GetString() {
-        StringBuilder temp = new StringBuilder("Shape: circle \n" +
+        StringBuilder temp = new StringBuilder("Shape: square    \n" +
                 "length  : " + this.getHeight() + "\n" +
                 "x1 : " + this.getX1() + "\n" +
                 "y1 : " + this.getY1() + "\n" +

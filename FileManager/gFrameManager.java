@@ -30,7 +30,7 @@ public class gFrameManager {
     }
 
     public void RemoveEffect(gEffect x) {
-        CurrnetFrame.RemoveEffect(x);
+        CurrnetFrame.removeEffect(x);
     }
 
     public void InitFrame(){
