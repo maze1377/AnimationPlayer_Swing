@@ -1,6 +1,8 @@
 frames: 100
 speed: 5 fps
 Items: 0
+height : 800
+width : 800
 
 Shape: circle 
 r  : 100
@@ -83,3 +85,29 @@ start: 60
 stop : 85
 path : D:\paydar\swingProject\src\cello.wav
 
+group begin
+Shape: square
+x1: 500
+y1: 500
+length : 100
+bordersize : 5
+bordercolor: 180, 180, 0
+backcolor : 50,0,250
+Shape: circle
+r : 100
+x1: 600
+y1: 600
+isfilled : true
+backcolor: 200, 10, 0
+bordercolor: 0, 200, 10
+group effect
+show
+start: 80
+group effect
+blink
+start : 80
+stop : 90
+group effect
+hide
+start: 98
+group end

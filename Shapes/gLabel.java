@@ -32,7 +32,7 @@ public class gLabel extends gShape {
         Graphics2D y=(Graphics2D) g;
         y.scale(this.getScale(),this.getScale());
         y.rotate(this.getDelta());
-        y.setColor(Color.white);
+        y.setColor(fontcolor);
         y.setStroke(new BasicStroke(this.getBorderSize()));
         y.setFont(font);
         y.drawString(getText(), getX1(), getY1());
@@ -80,6 +80,8 @@ public class gLabel extends gShape {
                 "x1 : " +this.getX1()+"\n"+
                 "y1 : " +this.getY1()+"\n"+
                 "text : " + this.getText()+"\n"+
+                "fontsize : " + this.getFont().getSize()+"\n"+
+                "fontcolor : " + gHandler.convertoColor(this.getFontcolor())+"\n"+
                 "bordercolor  : " + gHandler.convertoColor(this.getBordercolor())+"\n");
         for (gEffect x:this.getgEffectArrayList()){
             temp.append("effect \n");

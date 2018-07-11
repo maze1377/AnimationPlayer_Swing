@@ -41,11 +41,14 @@ public class gReader {
         Map<String,String> defult =new HashMap<>();
         defult.put("height","Null");
         defult.put("width","Null");
-        while (lines.get(currentI).trim().equals("mode")){
+        while (!lines.get(currentI).trim().contains("mode")){
                 index1 = lines.get(currentI).trim().indexOf(":");
                 if (index1 == -1) index1 = 0;
                 defult.put(lines.get(currentI).substring(0, index1).toLowerCase().trim(), lines.get(currentI).substring(index1 + 1).toLowerCase().trim());
                 currentI++;
+                if (lines.get(currentI).trim().equals("")){
+                    break;
+                }
         }
         try {
             Setting.width = Integer.parseInt(defult.get("width"));
